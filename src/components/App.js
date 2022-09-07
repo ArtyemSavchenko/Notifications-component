@@ -3,14 +3,14 @@ import appStyles from './App.module.css';
 import Notofications from './shared/Notifications/Notofications';
 
 const App = () => {
-  const [notificationHeading, setNotificationHeading] = useState('');
-  const [notificationText, setNotificationText] = useState('');
+  const [notificationHeading, setNotificationHeading] = useState('Heading');
+  const [notificationText, setNotificationText] = useState('Text');
   const [selectedType, setSelectedType] = useState('done');
   const [notifications, setNotifications] = useState([]);
 
   const handlerCloseNotification = id => {
-    setNotifications(
-      notifications.reduce((prev, item) => {
+    setNotifications((nots) =>
+      nots.reduce((prev, item) => {
         if (item.id !== id) {
           prev.push(item);
         }
@@ -31,10 +31,6 @@ const App = () => {
       ...notifications
     ]);
   };
-
-  useEffect(() => {
-    setNotifications([]);
-  }, []);
 
   return (
     <div className={appStyles.page}>

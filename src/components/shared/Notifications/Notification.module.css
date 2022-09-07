@@ -2,12 +2,29 @@
   width: 300px;
   color: #fff;
   box-sizing: border-box;
-  padding: .7em 1em;
+  padding: 0.7em 1em;
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
   align-items: center;
-  gap: .3em;
+  gap: 0.3em;
+  max-height: 0;
+  transition: max-height 0.1s linear;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.notificationOnLoad {
+  max-height: 100px;
+}
+
+.notificationOnClose {
+  max-height: 0;
+  padding: 0;
+  margin-bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s linear, padding 0.1s linear 0.3s,
+    max-height 0.1s linear 0.3s, margin-bottom 0.1s linear 0.3s;
 }
 
 .notificationError {
@@ -15,7 +32,7 @@
 }
 
 .notificationDone {
-  background-color: #2E7D32;
+  background-color: #2e7d32;
 }
 
 .heading {
@@ -48,9 +65,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
-
 }
 
 .btnClose:hover {
-  background-color: rgba(255, 255, 255, .3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
