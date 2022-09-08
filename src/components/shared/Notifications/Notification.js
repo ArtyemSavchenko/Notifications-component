@@ -7,7 +7,9 @@ const Notification = ({ id, type, heading, text, onClose }) => {
   );
 
   const handlerBtnCloseClick = () => {
-    setNotificationClass(string => string.replace(styles.notificationOnLoad, styles.notificationOnClose))
+    setNotificationClass(string =>
+      string.replace(styles.notificationOnLoad, styles.notificationOnClose)
+    );
     setTimeout(() => {
       onClose(id);
     }, 1500);

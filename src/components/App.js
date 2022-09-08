@@ -1,42 +1,27 @@
 import { useEffect, useState } from 'react';
 import appStyles from './App.module.css';
 import Notofications from './shared/Notifications/Notofications';
+import { useNotification } from './shared/Notifications/useNotification';
 
 const App = () => {
   const [notificationHeading, setNotificationHeading] = useState('Heading');
   const [notificationText, setNotificationText] = useState('Text');
   const [selectedType, setSelectedType] = useState('done');
-  const [notifications, setNotifications] = useState([]);
 
-  const handlerCloseNotification = id => {
-    setNotifications((nots) =>
-      nots.reduce((prev, item) => {
-        if (item.id !== id) {
-          prev.push(item);
-        }
-        return prev;
-      }, [])
-    );
-  };
+  const [notifications, addNotification] = useNotification();
 
-  const addNotification = () => {
-    const date = new Date();
-    setNotifications([
-      {
-        id: date.getSeconds() + '' + date.getMilliseconds(),
-        type: selectedType,
-        heading: notificationHeading,
-        text: notificationText
-      },
-      ...notifications
-    ]);
-  };
+  const addNotificationClick = () => {
+    addNotification({
+      type: selectedType,
+      text: notificationText,
+      heading: notificationHeading
+    })
+  }
 
   return (
     <div className={appStyles.page}>
       <Notofications
         notifications={notifications}
-        onClose={handlerCloseNotification}
       />
       <div className={appStyles.form}>
         <input
@@ -74,7 +59,7 @@ const App = () => {
         <button
           type="button"
           className={appStyles.formBtn}
-          onClick={addNotification}
+          onClick={addNotificationClick}
         >
           Добавить
         </button>
