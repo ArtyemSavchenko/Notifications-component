@@ -13,10 +13,10 @@ const App = () => {
 
   const notificationTypeId = useId();
 
-  const [notifications, addNotification] = useNotification();
+  const [notifications, pushNotification] = useNotification();
 
   const addNotificationClick = () => {
-    addNotification({
+    pushNotification({
       type: selectedType,
       text: notificationText,
       heading: notificationHeading
@@ -24,7 +24,7 @@ const App = () => {
   };
 
   const addRandomNotificationClick = () => {
-    addNotification(getNewNotification());
+    pushNotification(getNewNotification());
   };
 
   return (

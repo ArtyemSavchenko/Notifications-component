@@ -3,7 +3,7 @@ import { useState } from 'react';
 export const useNotification = () => {
   const [notifications, setNotifications] = useState([]);
 
-  const addNotification = notification => {
+  const pushNotification = notification => {
     const date = new Date();
     const newId = date.getSeconds() + date.getMilliseconds() + Math.random();
     setNotifications(nots => [
@@ -26,5 +26,5 @@ export const useNotification = () => {
     );
   };
 
-  return [{ list: notifications, closeNotification }, addNotification];
+  return [{ list: notifications, closeNotification }, pushNotification];
 };
