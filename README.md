@@ -8,9 +8,9 @@
 import Notofications from './shared/Notifications/Notofications';
 import { useNotification } from './shared/Notifications/useNotification';
 ```
-3. используем хук, который возвращает список уведомлений для компонента `notifications` и функцию пуша уведомлений `pushNotification`, которая принимает объект уведомления:
+3. используем хук, который возвращает список уведомлений `notifications` для компонента и функцию пуша уведомлений `pushNotification`, которая принимает объект уведомления:
 ```
-const [notifications, pushNotification] = useNotification(); //хук возвращает список оповещений, который мы
+const [notifications, pushNotification] = useNotification();
 ```
 4. добавляем в разметку компонент:
 ```
