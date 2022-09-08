@@ -31,7 +31,7 @@ const Notification = ({ id, type, heading, text, onClose, delayClose }) => {
   }, []);
 
   useEffect(() => {
-    if (!!delayClose) {
+    if (delayClose && delayClose > 0) {
       setTimeout(() => {
         closeNotification();
       }, delayClose);

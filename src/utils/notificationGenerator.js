@@ -44,6 +44,9 @@ export const getNewNotification = () => {
     notification.text = randomArrEl(doneMessages);
     notification.heading = randomArrEl(doneHeadings);
   }
+  if(notification.text === '' && notification.heading === '') {
+    notification.heading = 'Oops';
+  }
 
   return notification;
 };
