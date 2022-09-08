@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react';
 import styles from './Notification.module.css';
 
-const Notification = ({ id, type, heading, text, onClose }) => {
+const Notification = ({ id, type, heading, text, onClose, delayClose }) => {
   const [notificationClass, setNotificationClass] = useState(
     styles.notification
   );
 
-  const handlerBtnCloseClick = () => {
+  const closeNotification = () => {
     setNotificationClass(string =>
       string.replace(styles.notificationOnLoad, styles.notificationOnClose)
     );
     setTimeout(() => {
       onClose(id);
     }, 1500);
+  };
+
+  const handlerBtnCloseClick = () => {
+    closeNotification();
   };
 
   useEffect(() => {
@@ -24,6 +28,14 @@ const Notification = ({ id, type, heading, text, onClose }) => {
         return classNot + ' ' + styles.notificationError;
       }
     });
+  }, []);
+
+  useEffect(() => {
+    if (!!delayClose) {
+      setTimeout(() => {
+        closeNotification();
+      }, delayClose);
+    }
   }, []);
 
   useEffect(() => {

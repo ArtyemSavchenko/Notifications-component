@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import appStyles from './App.module.css';
 import Notofications from './shared/Notifications/Notofications';
 import { useNotification } from './shared/Notifications/useNotification';
+import { getNewNotification } from '../utils/notificationGenerator';
 
 const App = () => {
   const [notificationHeading, setNotificationHeading] = useState('Heading');
   const [notificationText, setNotificationText] = useState('Text');
   const [selectedType, setSelectedType] = useState('done');
+  const [delayClose, setDelayClose] = useState(5000)
 
   const [notifications, addNotification] = useNotification();
 
@@ -18,12 +20,22 @@ const App = () => {
     })
   }
 
+  const addRandomNotificationClick = () => {
+    addNotification(getNewNotification());
+  }
+
   return (
     <div className={appStyles.page}>
-      <Notofications
-        notifications={notifications}
-      />
+      <Notofications notifications={notifications} delayClose={delayClose}/>
       <div className={appStyles.form}>
+        <button
+          type="button"
+          className={appStyles.formBtn}
+          onClick={addRandomNotificationClick}
+        >
+          GET RANDOM
+        </button>
+
         <input
           className={appStyles.formInput}
           placeholder="Заголовок"

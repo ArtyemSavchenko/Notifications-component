@@ -1,7 +1,7 @@
 import Notification from './Notification';
 import styles from './Notofications.module.css';
 
-const Notofications = ({ notifications }) => {
+const Notofications = ({ notifications, delayClose }) => {
   return (
     <div className={styles.box}>
       {notifications.list.map(item => (
@@ -9,6 +9,7 @@ const Notofications = ({ notifications }) => {
           {...item}
           key={item.id}
           onClose={notifications.closeNotification}
+          delayClose={delayClose}
         />
       ))}
     </div>
