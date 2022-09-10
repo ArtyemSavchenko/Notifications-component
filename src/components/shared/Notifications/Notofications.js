@@ -9,7 +9,7 @@ const Notofications = ({ notifications, delayClose }) => {
           {...item}
           key={item.id}
           onClose={notifications.closeNotification}
-          delayClose={delayClose}
+          delayClose={(item.delayClose || item.delayClose === 0) ? item.delayClose : delayClose }
         />
       ))}
     </div>

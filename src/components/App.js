@@ -21,6 +21,7 @@ const App = () => {
       text: notificationText,
       heading: notificationHeading
     });
+
   };
 
   const addRandomNotificationClick = () => {

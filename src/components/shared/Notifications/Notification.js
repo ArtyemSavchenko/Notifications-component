@@ -20,32 +20,25 @@ const Notification = ({ id, type, heading, text, onClose, delayClose }) => {
   };
 
   useEffect(() => {
-    setNotificationClass(classNot => {
+    setNotificationClass(cssClass => {
       if (type === 'done') {
-        return classNot + ' ' + styles.notificationDone;
+        cssClass += ' ' + styles.notificationDone;
       }
       if (type === 'error') {
-        return classNot + ' ' + styles.notificationError;
+        cssClass += ' ' + styles.notificationError;
       }
+      return cssClass + ' ' + styles.notificationOnLoad;
     });
-  }, []);
 
-  useEffect(() => {
-    if (delayClose && delayClose > 0) {
+    if (delayClose > 0) {
       setTimeout(() => {
         closeNotification();
       }, delayClose);
     }
   }, []);
 
-  useEffect(() => {
-    setNotificationClass(classNot => {
-      return classNot + ' ' + styles.notificationOnLoad;
-    });
-  }, []);
-
   return (
-    <article aria-label="Уведомление" className={notificationClass}>
+    <div aria-label="Уведомление" className={notificationClass}>
       <div>
         <p className={styles.heading}>{heading}</p>
         <p className={styles.text}>{text}</p>
@@ -56,7 +49,7 @@ const Notification = ({ id, type, heading, text, onClose, delayClose }) => {
         onClick={handlerBtnCloseClick}
         aria-label="Закрыть уведомление"
       />
-    </article>
+    </div>
   );
 };
 export default Notification;
