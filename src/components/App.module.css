@@ -1,3 +1,9 @@
+:root {
+--main-color: #448aff;
+--hover-color: #2979ff;
+--active-color: #2962ff;
+}
+
 .page {
   display: flex;
   align-items: end;
@@ -20,29 +26,34 @@
   padding: .3em .7em;
   border-radius: 5px;
   border: 1px solid #aaa;
-  outline: 0;
 }
 
 .formInput:focus {
-  box-shadow: 0 0 0 1px cornflowerblue inset;
+  box-shadow: 0 0 0 1px var(--active-color) inset;
 }
 
 .formBtn {
   padding: .7em 1.8em;
   border: none;
-  background-color: cornflowerblue;
+  background-color: var(--main-color);
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: .2em;
   font-weight: 600;
-  box-shadow: 0 7px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.3);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.formBtn:hover {
+  background-color: var(--hover-color);
 }
 
 .formBtn:active {
-  transform: scale(.95);
+  transform: scale(.97);
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+  background-color: var(--active-color);
 }
 
 .formBtnBig {
