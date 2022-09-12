@@ -29,7 +29,7 @@ const doneMessages = [
   'Consectetur adipisicing elit. Expedita, voluptates'
 ]
 
-export const getNewNotification = () => {
+export const getRandomNotification = () => {
   const randomArrEl = (arr) => {
     return arr[Math.floor((arr.length - 1) * Math.random())];
   }
@@ -40,7 +40,7 @@ export const getNewNotification = () => {
     notification.text = randomArrEl(errorMessages);
     notification.heading = randomArrEl(errorHeadings);
   } else {
-    notification.type = 'done';
+    notification.type = 'success';
     notification.text = randomArrEl(doneMessages);
     notification.heading = randomArrEl(doneHeadings);
   }

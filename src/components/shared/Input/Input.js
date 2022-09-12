@@ -1,18 +1,18 @@
 import { useId } from 'react';
-import './Input.css';
+import styles from './Input.module.css';
 
 const Input = ({ placeholder, ...restProps }) => {
   const id = useId();
 
   return (
-    <div className="input-field">
+    <div className={styles.inputField}>
       <input
-        className="input-field__input"
+        className={styles.inputField__input}
         {...restProps}
         id={id}
         placeholder=" "
       />
-      <label htmlFor={id} className="input-field__label">
+      <label htmlFor={id} className={styles.inputField__label}>
         {placeholder}
       </label>
     </div>

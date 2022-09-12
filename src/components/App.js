@@ -2,16 +2,16 @@ import { useId, useState } from 'react';
 import appStyles from './App.module.css';
 import Notofications from './shared/Notifications/Notofications';
 import { useNotification } from './shared/Notifications/useNotification';
-import { getNewNotification } from '../utils/notificationGenerator';
+import { getRandomNotification } from '../utils/notificationGenerator';
 import Input from './shared/Input/Input';
 
 const App = () => {
   const [notificationHeading, setNotificationHeading] = useState('');
   const [notificationText, setNotificationText] = useState('');
-  const [selectedType, setSelectedType] = useState('done');
+  const [selectedType, setSelectedType] = useState('success');
   const [delayClose, setDelayClose] = useState(5000);
 
-  const notificationTypeId = useId();
+  const typeSelectorId = useId();
 
   const [notifications, pushNotification] = useNotification();
 
@@ -21,24 +21,23 @@ const App = () => {
       text: notificationText,
       heading: notificationHeading
     });
-
   };
 
   const addRandomNotificationClick = () => {
-    pushNotification(getNewNotification());
+    pushNotification(getRandomNotification());
   };
 
   return (
     <div className={appStyles.page}>
       <Notofications notifications={notifications} delayClose={delayClose} />
       <div className={appStyles.form}>
-        <div className={appStyles.delayBox}>
+        <div className={appStyles.form__delayBox}>
           {delayClose > 0
             ? `Close after ${delayClose / 1000} sec.`
             : "Don't close"}
           <input
             type="range"
-            className={appStyles.delayRange}
+            className={appStyles.form__delayRange}
             step="100"
             min="0"
             max="10000"
@@ -48,14 +47,14 @@ const App = () => {
         </div>
         <button
           type="button"
-          className={appStyles.formBtn + ' ' + appStyles.formBtnBig}
+          className={appStyles.form__btn + ' ' + appStyles.form__btn_size_big}
           onClick={addRandomNotificationClick}
         >
           random
         </button>
         <div>
-          <p className={appStyles.heading}>Or custom notification</p>
-          <p className={appStyles.subheading}>fields can be empty</p>
+          <p className={appStyles.form__heading}>Or custom notification</p>
+          <p className={appStyles.form__subheading}>fields can be empty</p>
         </div>
         <Input
           placeholder="Title"
@@ -68,26 +67,26 @@ const App = () => {
           onChange={e => setNotificationText(e.target.value)}
         />
         <label
-          htmlFor={notificationTypeId}
-          className={appStyles.notificationType}
+          htmlFor={typeSelectorId}
+          className={appStyles.typeSelector}
         >
-          Done
+          Success
           <input
             type="checkbox"
-            className={appStyles.notificationTypeSwitcher}
-            id={notificationTypeId}
-            checked={selectedType === 'done'}
+            className={appStyles.typeSelector__switcher}
+            id={typeSelectorId}
+            checked={selectedType === 'success'}
             onChange={() => {
-              selectedType === 'done'
+              selectedType === 'success'
                 ? setSelectedType('error')
-                : setSelectedType('done');
+                : setSelectedType('success');
             }}
           />
           Error
         </label>
         <button
           type="button"
-          className={appStyles.formBtn + ' ' + appStyles.formBtnAdd}
+          className={appStyles.form__btn + ' ' + appStyles.form__btn_position_right}
           onClick={addNotificationClick}
         >
           add

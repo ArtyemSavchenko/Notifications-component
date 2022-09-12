@@ -21,18 +21,20 @@
   gap: 16px;
 }
 
-.formInput {
-  font-size: 16px;
-  padding: .3em .7em;
-  border-radius: 5px;
-  border: 1px solid #aaa;
+.form__heading {
+  margin: 0 16px;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+.form__subheading {
+  margin: 0 16px;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
 }
 
-.formInput:focus {
-  box-shadow: 0 0 0 1px var(--active-color) inset;
-}
-
-.formBtn {
+.form__btn {
   padding: .7em 1.8em;
   border: none;
   background-color: var(--main-color);
@@ -46,35 +48,48 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.formBtn:hover {
+.form__btn:hover {
   background-color: var(--hover-color);
 }
 
-.formBtn:active {
+.form__btn:active {
   transform: scale(.97);
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
   background-color: var(--active-color);
 }
 
-.formBtnBig {
+.form__btn_size_big {
   font-size: 24px;
   margin-bottom: 2em;
 }
 
-.formBtnAdd {
+.form__btn_position_right {
   align-self: end;
 }
 
-.notificationType {
+.form__delayBox {
+  display: flex;
+  flex-direction: column;
+  row-gap: .5em;
+  text-align: center;
+  font-size: 16px;
+}
+
+.form__delayRange {
+  cursor: grab;
+}
+
+.typeSelector {
   display: flex;
   column-gap: .5em;
   align-items: center;
   font-size: 16px;
   cursor: pointer;
   align-self: center;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.notificationTypeSwitcher {
+.typeSelector__switcher {
   appearance: none;
   background-color: #b00020;
   width: 2.5em;
@@ -85,11 +100,11 @@
   cursor: pointer;
 }
 
-.notificationTypeSwitcher:checked {
+.typeSelector__switcher:checked {
   background-color: #2e7d32;
 }
 
-.notificationTypeSwitcher::before {
+.typeSelector__switcher::before {
   content: '';
   position: absolute;
   background-color: #fff;
@@ -101,32 +116,7 @@
   transition: all .15s;
 }
 
-.notificationTypeSwitcher:checked::before {
+.typeSelector__switcher:checked::before {
   right: calc(100% - 2px);
   transform: translateX(100%);
-}
-
-.delayBox {
-  display: flex;
-  flex-direction: column;
-  row-gap: .5em;
-  text-align: center;
-  font-size: 16px;
-}
-
-.delayRange {
-  cursor: grab;
-}
-
-.heading {
-  margin: 0 16px;
-  font-size: 18px;
-  font-weight: 400;
-  text-align: center;
-}
-.subheading {
-  margin: 0 16px;
-  font-size: 14px;
-  font-weight: 300;
-  text-align: center;
 }
