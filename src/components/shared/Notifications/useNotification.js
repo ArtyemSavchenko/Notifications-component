@@ -8,18 +8,18 @@ export const useNotification = () => {
     const newId = date.getSeconds() + date.getMilliseconds() + Math.random();
     const newNotification = {
       ...notification,
-      id: newId
+      id: newId,
     };
     if (delayClose !== null) {
       newNotification.delayClose = delayClose;
     }
-    setNotifications(nots => [newNotification, ...nots]);
+    setNotifications(notifications => [newNotification, ...notifications]);
     return newId;
   };
 
   const closeNotification = id => {
-    setNotifications(nots =>
-      nots.reduce((prev, not) => {
+    setNotifications(notifications =>
+      notifications.reduce((prev, not) => {
         if (not.id !== id) {
           prev.push(not);
         }

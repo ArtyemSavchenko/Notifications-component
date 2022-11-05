@@ -41,7 +41,7 @@ const Notification = ({ id, type, heading, text, onClose, delayClose }) => {
         type="button"
         className={styles.notification__btnClose}
         onClick={handlerBtnCloseClick}
-        aria-label="Закрыть уведомление"
+        aria-label="Закрыть уведомление."
       />
     </div>
   );

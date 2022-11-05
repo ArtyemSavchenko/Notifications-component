@@ -36,16 +36,16 @@
   font-size: inherit;
   color: #fff;
   background-color: #333;
-  border-radius: .3em;
-  transition: all .15s;
+  border-radius: 0.3em;
+  transition: all 0.15s;
   cursor: text;
   max-width: 80%;
 }
 
 .inputField__input:not(:placeholder-shown) + .inputField__label,
 .inputField__input:focus + .inputField__label {
-  font-size: .7em;
+  font-size: 0.7em;
   top: 0;
-  padding: 0 .5em;
+  padding: 0 0.5em;
   color: currentColor;
 }

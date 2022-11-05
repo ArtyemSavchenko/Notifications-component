@@ -1,9 +1,12 @@
 import { useId, useState } from 'react';
+
 import appStyles from './App.module.css';
-import Notofications from './shared/Notifications/Notofications';
-import { useNotification } from './shared/Notifications/useNotification';
-import { getRandomNotification } from '../utils/notificationGenerator';
+
 import Input from './shared/Input/Input';
+import Notifications from './shared/Notifications/Notifications';
+import { useNotification } from './shared/Notifications/useNotification';
+
+import { getRandomNotification } from '../utils/notificationGenerator';
 
 const App = () => {
   const [notificationHeading, setNotificationHeading] = useState('');
@@ -19,7 +22,7 @@ const App = () => {
     pushNotification({
       type: selectedType,
       text: notificationText,
-      heading: notificationHeading
+      heading: notificationHeading,
     });
   };
 
@@ -29,7 +32,7 @@ const App = () => {
 
   return (
     <div className={appStyles.page}>
-      <Notofications notifications={notifications} delayClose={delayClose} />
+      <Notifications notifications={notifications} delayClose={delayClose} />
       <div className={appStyles.form}>
         <div className={appStyles.form__delayBox}>
           {delayClose > 0
@@ -66,10 +69,7 @@ const App = () => {
           value={notificationText}
           onChange={e => setNotificationText(e.target.value)}
         />
-        <label
-          htmlFor={typeSelectorId}
-          className={appStyles.typeSelector}
-        >
+        <label htmlFor={typeSelectorId} className={appStyles.typeSelector}>
           Success
           <input
             type="checkbox"
@@ -86,7 +86,9 @@ const App = () => {
         </label>
         <button
           type="button"
-          className={appStyles.form__btn + ' ' + appStyles.form__btn_position_right}
+          className={
+            appStyles.form__btn + ' ' + appStyles.form__btn_position_right
+          }
           onClick={addNotificationClick}
         >
           add

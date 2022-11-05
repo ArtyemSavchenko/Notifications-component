@@ -1,7 +1,7 @@
 import Notification from './Notification';
-import styles from './Notofications.module.css';
+import styles from './Notifications.module.css';
 
-const Notofications = ({ notifications, delayClose }) => {
+const Notifications = ({ notifications, delayClose }) => {
   return (
     <div className={styles.notifications}>
       {notifications.list.map(item => (
@@ -9,11 +9,15 @@ const Notofications = ({ notifications, delayClose }) => {
           {...item}
           key={item.id}
           onClose={notifications.closeNotification}
-          delayClose={(item.delayClose || item.delayClose === 0) ? item.delayClose : delayClose }
+          delayClose={
+            item.delayClose || item.delayClose === 0
+              ? item.delayClose
+              : delayClose
+          }
         />
       ))}
     </div>
   );
 };
 
-export default Notofications;
+export default Notifications;
