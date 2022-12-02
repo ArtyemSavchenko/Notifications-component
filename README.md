@@ -3,20 +3,21 @@
 
 ### Как использовать:
 1. забираем папку src/components/shared/`Notifications` себе в проект;
-2. импортируем компонент и хук:
+2. импортируем `NotificationsProvider` из Notifications и оборачиваем App в провайдер:
 ```
-import Notofications from './shared/Notifications/Notofications';
-import { useNotification } from './shared/Notifications/useNotification';
+import NotificationsProvider from './components/shared/Notifications/Notifications';
+
+<NotificationsProvider delayClose={5000}>
+  <App />
+</NotificationsProvider>
 ```
-3. используем хук, который возвращает список уведомлений `notifications` для компонента и функцию пуша уведомлений `pushNotification`:
+`delayClose` — задержка автоматического закрытия уведомлений по умолчанию в мс (0 - уведомления надо закрывать руками).  
+2. импортируем хук `usePushNotification` внутри провайдера, он возвращает функцию вызова уведомления:
 ```
-const [notifications, pushNotification] = useNotification();
+import { usePushNotification } from './shared/Notifications/Notifications';
+
+const pushNotification = useNotification();
 ```
-4. добавляем в разметку компонент:
-```
-<Notofications notifications={notifications} delayClose={delayClose} />
-```
-`notifications` получает список уведомлений из хука, `delayClose` — задержка автоматического закрытия уведомлений по умолчанию в мс (0 - уведомления надо закрывать руками).  
 
 #### `pushNotification`
   Функция `pushNotification` первым аргументом принимает объект уведомления, а вторым — необязательный параметр задержки закрытия. Эта задержка имеет высший приоритет перед задержкой по умолчанию и необходима например для критических уведомлений, которые не должны закрываться автоматически.
@@ -24,7 +25,7 @@ const [notifications, pushNotification] = useNotification();
 Объект уведомления:
 ```
 {
-  type: 'done', // done (зеленый фон) или error (красный фон)
+  type: 'success', // success (зеленый фон) или error (красный фон)
   heading: 'Текст заголовка', // может отсутствовать
   text: 'Текст уведомления', // может отсутствовать
 }
